@@ -14,7 +14,7 @@ const ShareFolderModal = (props) => {
     if (props.folderToBeShared) {
       setShareLink(window.location.origin + "/folder/" + props.folderToBeShared.id + "/share");
     }
-  }, []);
+  }, [props.folderToBeShared]);
 
   const submitShareDuration = async () => {
     try {
