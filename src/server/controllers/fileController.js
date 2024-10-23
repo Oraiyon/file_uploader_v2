@@ -134,12 +134,10 @@ export const get_file_share = expressAsyncHandler(async (req, res, next) => {
     const date = new Date(file.Folder.share_Date);
     if (Date.now() < date.getTime()) {
       res.status(200).json(file);
-    } else {
-      res.status(200).json(null);
+      return;
     }
-  } else {
-    res.status(200).json(null);
   }
+  res.status(200).json(null);
 });
 
 export default post_upload_file;

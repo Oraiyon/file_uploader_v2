@@ -113,12 +113,10 @@ export const get_shared_folder = expressAsyncHandler(async (req, res, next) => {
         }
       });
       res.status(200).json({ folder: folder, files: files });
-    } else {
-      res.status(200).json(null);
+      return;
     }
-  } else {
-    res.status(200).json(null);
   }
+  res.status(200).json(null);
 });
 
 export default get_folders;
