@@ -3,7 +3,8 @@ import post_signup, { login, logout, get_user } from "./controllers/userControll
 import post_upload_file, {
   delete_file,
   get_file,
-  get_folder_files
+  get_folder_files,
+  get_file_share
 } from "./controllers/fileController.js";
 import get_folders, {
   delete_folder,
@@ -25,6 +26,7 @@ router.post("/api/:id/upload", post_upload_file);
 router.get("/api/:folderId/files", get_folder_files);
 router.get("/api/:fileId/file", get_file);
 router.delete("/api/:id/:folderId/delete/:fileId", delete_file);
+router.get("/api/:fileId/file/share", get_file_share);
 
 // folderController
 router.get("/api/:id/folders", get_folders);

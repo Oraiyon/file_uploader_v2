@@ -101,9 +101,6 @@ export const get_file = expressAsyncHandler(async (req, res, next) => {
   const file = await prisma.file.findFirst({
     where: {
       id: req.params.fileId
-    },
-    include: {
-      Folder: true
     }
   });
   res.status(200).json(file);
@@ -122,6 +119,23 @@ export const delete_file = expressAsyncHandler(async (req, res, next) => {
     }
   });
   res.status(200).json(files);
+});
+
+export const get_file_share = expressAsyncHandler(async (req, res, next) => {
+  const file = await prisma.file.findFirst({
+    where: {
+      id: req.params.fileId
+    },
+    include: {
+      Folder: true
+    }
+  });
+  const date = new Date(file.Folder.share_Date);
+  if (Date.now() < date.getTime()) {
+    res.status(200).json(file);
+  } else {
+    res.status(200).json(null);
+  }
 });
 
 export default post_upload_file;

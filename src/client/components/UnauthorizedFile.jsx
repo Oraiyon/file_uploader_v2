@@ -15,7 +15,7 @@ const UnauthorizedFile = () => {
   useEffect(() => {
     const fetchFile = async () => {
       try {
-        const response = await fetch(`/api/${link[6]}/file`);
+        const response = await fetch(`/api/${link[6]}/file/share`);
         const data = await response.json();
         setFile(data);
         setFolder(data.Folder);
