@@ -101,6 +101,9 @@ export const get_file = expressAsyncHandler(async (req, res, next) => {
   const file = await prisma.file.findFirst({
     where: {
       id: req.params.fileId
+    },
+    include: {
+      Folder: true
     }
   });
   res.status(200).json(file);

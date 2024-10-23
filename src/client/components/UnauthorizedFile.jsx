@@ -18,21 +18,12 @@ const UnauthorizedFile = () => {
         const response = await fetch(`/api/${link[6]}/file`);
         const data = await response.json();
         setFile(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const fetchFiles = async () => {
-      try {
-        const response = await fetch(`/api/${link[4]}/share`);
-        const data = await response.json();
-        setFolder(data.folder);
+        setFolder(data.Folder);
       } catch (error) {
         console.log(error);
       }
     };
     fetchFile();
-    fetchFiles();
   }, []);
 
   const downloadFile = () => {
