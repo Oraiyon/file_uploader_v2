@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "folders" ADD COLUMN     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "share_Date" TIMESTAMP(3);

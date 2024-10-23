@@ -1,0 +1,87 @@
+.shareFolderModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 0.25em;
+  padding-bottom: 0.25em;
+  width: 75%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.shareFolderModal > button {
+  cursor: pointer;
+  border: 2px solid black;
+}
+
+.shareFolderModal > button:first-of-type {
+  align-self: flex-end;
+  display: flex;
+  max-width: 25px;
+  border-top: none;
+  border-right: none;
+}
+
+.shareFolderModal > button > svg {
+  width: 100%;
+}
+
+.shareFolderModal > div {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.shareFolderModal > div > button {
+  cursor: pointer;
+  padding: 0.25em;
+  border: 2px solid var(--secondary-color);
+}
+
+.shareFolderModal > div > button:hover {
+  border-color: black;
+}
+
+.shareInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.shareInfo > div button,
+.shareLink > button {
+  max-width: 25px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.25em;
+}
+
+.shareInfo > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.25em;
+}
+
+.shareLink {
+  display: flex;
+  gap: 0.25em;
+  justify-content: center;
+  width: 100%;
+}
+
+.shareInfo > div > select {
+  cursor: pointer;
+}

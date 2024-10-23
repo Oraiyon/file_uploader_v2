@@ -1,0 +1,14 @@
+.navContainer {
+  display: flex;
+  padding-bottom: 0.25em;
+}
+
+.navContainer > a {
+  border-top: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  padding: 0.25em;
+}
+
+.navContainer > a:hover {
+  border-color: black;
+}

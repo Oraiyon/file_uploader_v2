@@ -1,0 +1,48 @@
+.formContainer {
+  display: flex;
+  gap: 0.25em;
+}
+
+.uploadFileForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 0.25em;
+  align-items: center;
+}
+
+.uploadFileForm > h2 {
+  align-self: flex-start;
+}
+
+.uploadFileForm > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.25em;
+}
+
+.filePreview {
+  width: 49%;
+  position: relative;
+}
+
+.filePreview > img {
+  width: 100%;
+}
+
+.filePreview > svg {
+  width: 50%;
+  height: 50%;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
