@@ -22,6 +22,15 @@
   gap: 0.25em;
 }
 
+.uploadFileForm > div > button {
+  border: 2px solid var(--secondary-color);
+  cursor: pointer;
+}
+
+.uploadFileForm > div > button:hover {
+  border-color: black;
+}
+
 .filePreview {
   width: 49%;
   position: relative;

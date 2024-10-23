@@ -15,6 +15,15 @@
   text-decoration: underline;
 }
 
+.loginForm > div > button {
+  border: 2px solid var(--secondary-color);
+  cursor: pointer;
+}
+
+.loginForm > div > button:hover {
+  border-color: black;
+}
+
 .invalidInput {
   color: red;
 }

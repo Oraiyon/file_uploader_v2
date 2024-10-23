@@ -57,7 +57,15 @@
   gap: 0.25em;
 }
 
-.shareInfo > div button,
+.shareInfo > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.25em;
+}
+
+.shareInfo > div > button,
 .shareLink > button {
   max-width: 25px;
   width: 100%;
@@ -67,12 +75,8 @@
   padding: 0.25em;
 }
 
-.shareInfo > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 0.25em;
+.shareInfo > div > button:hover {
+  border: 2px solid black;
 }
 
 .shareLink {
