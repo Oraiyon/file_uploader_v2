@@ -8,6 +8,7 @@ import { mdiDownload } from "@mdi/js";
 const UnauthorizedFile = () => {
   const [link, setLink] = useState(window.location.href.split("/"));
   const [file, setFile] = useState(null);
+  const [folder, setFolder] = useState(null);
 
   const downloadLinkRef = useRef(null);
 
@@ -21,7 +22,17 @@ const UnauthorizedFile = () => {
         console.log(error);
       }
     };
+    const fetchFiles = async () => {
+      try {
+        const response = await fetch(`/api/${link[4]}/share`);
+        const data = await response.json();
+        setFolder(data.folder);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchFile();
+    fetchFiles();
   }, []);
 
   const downloadFile = () => {
@@ -32,24 +43,27 @@ const UnauthorizedFile = () => {
     downloadLinkRef.current.click();
   };
 
-  if (file) {
+  if (file && folder) {
     return (
-      <div className={styles.fileContainer}>
-        <div>
-          <div className={styles.file_buttons}>
-            <button>
-              <Icon path={mdiDownload} title="Download" onClick={downloadFile}></Icon>
-            </button>
-            <h3>
-              {file.name}.{file.format}
-            </h3>
-            <button></button>
-            <a ref={downloadLinkRef} href=""></a>
+      <>
+        <Navbar level={3} selectedFolder={folder} selectedFile={file} />
+        <div className={styles.fileContainer}>
+          <div>
+            <div className={styles.file_buttons}>
+              <button>
+                <Icon path={mdiDownload} title="Download" onClick={downloadFile}></Icon>
+              </button>
+              <h3>
+                {file.name}.{file.format}
+              </h3>
+              <button></button>
+              <a ref={downloadLinkRef} href=""></a>
+            </div>
+            <img src={file.url} alt={file.name} />
+            <DisplayFileSize file={file} />
           </div>
-          <img src={file.url} alt={file.name} />
-          <DisplayFileSize file={file} />
         </div>
-      </div>
+      </>
     );
   }
 };

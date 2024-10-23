@@ -106,13 +106,12 @@ export const get_shared_folder = expressAsyncHandler(async (req, res, next) => {
   });
   const date = new Date(folder.share_Date);
   if (Date.now() < date.getTime() || !folder) {
-    // fetch files with folder.Id
     const files = await prisma.file.findMany({
       where: {
         folderId: folder.id
       }
     });
-    res.status(200).json(files);
+    res.status(200).json({ folder: folder, files: files });
   } else {
     res.status(200).json(null);
   }
