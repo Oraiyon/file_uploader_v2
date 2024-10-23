@@ -3,7 +3,7 @@ import styles from "../stylesheets/UnauthorizedFile.module.css";
 import Navbar from "./Navbar";
 import DisplayFileSize from "./DisplayFileSize";
 import Icon from "@mdi/react";
-import { mdiDownload, mdiClose } from "@mdi/js";
+import { mdiDownload } from "@mdi/js";
 
 const UnauthorizedFile = () => {
   const [link, setLink] = useState(window.location.href.split("/"));
@@ -27,7 +27,7 @@ const UnauthorizedFile = () => {
   const downloadFile = () => {
     const start = file.url.substr(0, 50);
     const end = file.url.slice(49);
-    const url = file + `fl_attachment:${file.name}` + end;
+    const url = start + `fl_attachment:${file.name}` + end;
     downloadLinkRef.current.href = url;
     downloadLinkRef.current.click();
   };

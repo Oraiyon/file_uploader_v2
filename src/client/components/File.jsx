@@ -31,7 +31,7 @@ const File = () => {
   const downloadFile = () => {
     const start = selectedFile.url.substr(0, 50);
     const end = selectedFile.url.slice(49);
-    const url = selectedFile + `fl_attachment:${selectedFile.name}` + end;
+    const url = start + `fl_attachment:${selectedFile.name}` + end;
     downloadLinkRef.current.href = url;
     downloadLinkRef.current.click();
   };

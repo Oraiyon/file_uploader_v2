@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "../stylesheets/UnauthorizedFolder.module.css";
 import Navbar from "./Navbar";
@@ -9,6 +9,8 @@ import { mdiDownload } from "@mdi/js";
 const UnauthorizedFolder = () => {
   const [link, setLink] = useState(window.location.href.split("/"));
   const [files, setFiles] = useState(null);
+
+  const downloadLinkRef = useRef(null);
 
   useEffect(() => {
     const fetchFiles = async () => {
@@ -22,6 +24,14 @@ const UnauthorizedFolder = () => {
     };
     fetchFiles();
   }, []);
+
+  const downloadFile = (file) => {
+    const start = file.url.substr(0, 50);
+    const end = file.url.slice(49);
+    const url = start + `fl_attachment:${file.name}` + end;
+    downloadLinkRef.current.href = url;
+    downloadLinkRef.current.click();
+  };
 
   return (
     <div className={styles.fileContainer}>
@@ -43,6 +53,7 @@ const UnauthorizedFolder = () => {
               </div>
             </Link>
             <DisplayFileSize file={file} />
+            <a ref={downloadLinkRef} href=""></a>
           </div>
         ))
       ) : (

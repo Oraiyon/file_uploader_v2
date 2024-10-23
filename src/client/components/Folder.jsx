@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import styles from "../stylesheets/Folder.module.css";
 import Navbar from "./Navbar";
@@ -20,6 +20,8 @@ const Folder = () => {
     setFiles
   ] = useOutletContext();
 
+  const downloadLinkRef = useRef(null);
+
   useEffect(() => {
     const fetchFiles = async () => {
       const response = await fetch(`/api/${selectedFolder.id}/files`);
@@ -40,8 +42,8 @@ const Folder = () => {
     const start = file.url.substr(0, 50);
     const end = file.url.slice(49);
     const url = start + `fl_attachment:${file.name}` + end;
-    downloadLink.current.href = url;
-    downloadLink.current.click();
+    downloadLinkRef.current.href = url;
+    downloadLinkRef.current.click();
   };
 
   const deleteFile = async (file) => {
@@ -76,6 +78,7 @@ const Folder = () => {
                 </div>
               </Link>
               <DisplayFileSize file={file} />
+              <a ref={downloadLinkRef} href=""></a>
             </div>
           ))
         ) : (
