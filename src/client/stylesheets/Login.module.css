@@ -24,6 +24,27 @@
   border-color: black;
 }
 
+.loginForm > div > div {
+  display: flex;
+  gap: 0.25em;
+}
+
+.loginForm > div > div > input {
+  width: 100%;
+}
+
+.loginForm > div > div > button {
+  width: 100%;
+  max-width: 25px;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--secondary-color);
+  cursor: pointer;
+}
+
+.loginForm > div > div > button:hover {
+  border-color: black;
+}
 .invalidInput {
   color: red;
 }

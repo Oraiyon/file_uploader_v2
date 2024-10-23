@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import styles from "../stylesheets/Login.module.css";
+import Icon from "@mdi/react";
+import { mdiEye, mdiEyeOff } from "@mdi/js";
 
 const Login = () => {
   const [user, setUser] = useOutletContext();
 
   const [invalidUsername, setInvalidUsername] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
+  const [revealPasswordIcon, setRevealPasswordIcon] = useState(mdiEye);
 
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
@@ -68,6 +71,16 @@ const Login = () => {
     }
   };
 
+  const revealPassword = () => {
+    if (passwordRef.current.type === "password") {
+      setRevealPasswordIcon(mdiEyeOff);
+      passwordRef.current.type = "text";
+    } else {
+      setRevealPasswordIcon(mdiEye);
+      passwordRef.current.type = "password";
+    }
+  };
+
   return (
     <>
       <form action="" onSubmit={submitLogin} className={styles.loginForm}>
@@ -76,7 +89,12 @@ const Login = () => {
           <label htmlFor="username">Username:</label>
           <input type="text" name="username" id="username" ref={usernameRef} />
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="password" ref={passwordRef} />
+          <div>
+            <input type="password" name="password" id="password" ref={passwordRef} />
+            <button onClick={revealPassword}>
+              <Icon path={revealPasswordIcon}></Icon>
+            </button>
+          </div>
           {invalidUsername || invalidPassword ? (
             <p className={styles.invalidInput}>Invalid Username or Password.</p>
           ) : (
