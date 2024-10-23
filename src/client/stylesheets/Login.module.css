@@ -33,7 +33,7 @@
   width: 100%;
 }
 
-.loginForm > div > div > button {
+.loginForm > div > div > div {
   width: 100%;
   max-width: 25px;
   display: flex;
@@ -42,8 +42,9 @@
   cursor: pointer;
 }
 
-.loginForm > div > div > button:hover {
+.loginForm > div > div > div:hover {
   border-color: black;
+  background-color: var(--secondary-color);
 }
 .invalidInput {
   color: red;

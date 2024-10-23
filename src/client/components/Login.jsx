@@ -92,9 +92,9 @@ const Login = () => {
           <label htmlFor="password">Password:</label>
           <div>
             <input type="password" name="password" id="password" ref={passwordRef} />
-            <button onClick={revealPassword}>
+            <div onClick={revealPassword}>
               <Icon path={revealPasswordIcon}></Icon>
-            </button>
+            </div>
           </div>
           {invalidUsername || invalidPassword ? (
             <p className={styles.invalidInput}>Invalid Username or Password.</p>
