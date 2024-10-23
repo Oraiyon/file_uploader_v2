@@ -6,13 +6,13 @@ const Navbar = (props) => {
     if (props.level === 1) {
       return (
         <nav className={styles.navContainer}>
-          <Link to={`/${props.user.id}`}>Folder List</Link>
+          <Link to={`/${props.user.id}`}>Folders</Link>
         </nav>
       );
     } else if (props.level === 2) {
       return (
         <nav className={styles.navContainer}>
-          <Link to={`/${props.user.id}`}>Folder List</Link>
+          <Link to={`/${props.user.id}`}>Folders</Link>
           <Link to={`/${props.user.id}/folder/${props.selectedFolder.id}`}>
             {props.selectedFolder.name}
           </Link>
@@ -21,7 +21,7 @@ const Navbar = (props) => {
     } else if (props.level === 3) {
       return (
         <nav className={styles.navContainer}>
-          <Link to={`/${props.user.id}`}>Folder List</Link>
+          <Link to={`/${props.user.id}`}>Folders</Link>
           <Link to={`/${props.user.id}/folder/${props.selectedFolder.id}`}>
             {props.selectedFolder.name}
           </Link>
