@@ -71,7 +71,8 @@ const Login = () => {
     }
   };
 
-  const revealPassword = () => {
+  const revealPassword = (e) => {
+    e.preventDefault();
     if (passwordRef.current.type === "password") {
       setRevealPasswordIcon(mdiEyeOff);
       passwordRef.current.type = "text";
