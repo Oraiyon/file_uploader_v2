@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Icon from "@mdi/react";
 import { mdiClose, mdiContentCopy } from "@mdi/js";
 import styles from "../stylesheets/ShareFolderModal.module.css";
@@ -9,6 +9,12 @@ const ShareFolderModal = (props) => {
 
   const shareFolderModal = useRef(null);
   const shareDurationRef = useRef(null);
+
+  useEffect(() => {
+    if (props.folderToBeShared) {
+      setShareLink(window.location.origin + "/folder/" + props.folderToBeShared.id + "/share");
+    }
+  }, []);
 
   const submitShareDuration = async () => {
     try {
