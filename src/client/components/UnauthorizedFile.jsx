@@ -56,6 +56,8 @@ const UnauthorizedFile = () => {
         </div>
       </>
     );
+  } else {
+    return <h2>UNAUTHORIZED USER</h2>;
   }
 };
 
