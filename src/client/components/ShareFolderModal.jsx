@@ -74,7 +74,7 @@ const ShareFolderModal = (props) => {
                 <option value="7">7 Days</option>
               </select>
             </div>
-            <button onClick={submitShareDuration}>Send</button>
+            <button onClick={submitShareDuration}>Create Link</button>
           </div>
         ) : (
           <div className={styles.shareLink}>
