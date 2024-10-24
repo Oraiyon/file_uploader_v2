@@ -28,6 +28,7 @@ const ShareFolderModal = (props) => {
         })
       });
       const data = await response.json();
+      props.setFolderTobeShared(data);
       setShareLink(window.location.origin + "/folder/" + data.id + "/share");
       setShareDuration(shareDurationRef.current.value);
     } catch (error) {
