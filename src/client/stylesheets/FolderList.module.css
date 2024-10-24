@@ -120,16 +120,3 @@
   cursor: default;
   pointer-events: none;
 }
-
-.folderCreator {
-  display: flex;
-  align-items: center;
-}
-
-.folderCreator > svg {
-  max-width: 25px;
-}
-
-.folderCreator > p {
-  text-overflow: ellipsis;
-}
