@@ -139,8 +139,8 @@ const Folders = (props) => {
             user={props.user}
             displayShareFolderModal={displayShareFolderModal}
             folderToBeShared={folderToBeShared}
-            setFolderTobeShared={setFolderTobeShared}
             closeModal={closeModal}
+            setFolderList={props.setFolderList}
           />
         </div>
       </>

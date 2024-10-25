@@ -28,9 +28,9 @@ const ShareFolderModal = (props) => {
         })
       });
       const data = await response.json();
-      props.setFolderTobeShared(data);
-      setShareLink(window.location.origin + "/folder/" + data.id + "/share");
+      setShareLink(window.location.origin + "/folder/" + data.folder.id + "/share");
       setShareDuration(shareDurationRef.current.value);
+      props.setFolderList(data.folderList);
     } catch (error) {
       console.log(error);
     }
@@ -52,19 +52,24 @@ const ShareFolderModal = (props) => {
         </button>
         {!shareDuration ? (
           <div className={styles.shareInfo}>
-            {props.folderToBeShared.share_Date ? (
-              <div>
-                <p>Current Link:</p>
-                <p>{window.location.origin + "/folder/" + props.folderToBeShared.id + "/share"}</p>
-                <button onClick={copyLink}>
-                  <Icon path={mdiContentCopy}></Icon>
-                </button>
-              </div>
+            {props.folderToBeShared.shareDate ? (
+              <>
+                <div>
+                  <p>Current Link:</p>
+                  <p>
+                    {window.location.origin + "/folder/" + props.folderToBeShared.id + "/share"}
+                  </p>
+                  <button onClick={copyLink}>
+                    <Icon path={mdiContentCopy}></Icon>
+                  </button>
+                </div>
+                <p>Valid Until: {props.folderToBeShared.shareDate.split("T")[0]}</p>
+              </>
             ) : (
               ""
             )}
             <div>
-              {props.folderToBeShared.share_Date ? (
+              {props.folderToBeShared.shareDate ? (
                 <label htmlFor="shareDuration">New Share Length:</label>
               ) : (
                 <label htmlFor="shareDuration">Share Length:</label>

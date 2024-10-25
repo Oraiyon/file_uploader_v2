@@ -79,13 +79,13 @@
   border: 2px solid black;
 }
 
+.shareInfo > div > select {
+  cursor: pointer;
+}
+
 .shareLink {
   display: flex;
   gap: 0.25em;
   justify-content: center;
   width: 100%;
-}
-
-.shareInfo > div > select {
-  cursor: pointer;
 }

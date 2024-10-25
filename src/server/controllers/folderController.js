@@ -89,10 +89,18 @@ export const put_share_folder = expressAsyncHandler(async (req, res, next) => {
       userId: req.params.id
     },
     data: {
-      share_Date: new Date(Date.now() + 60 * 60 * 24 * 1000 * req.body.length)
+      shareDate: new Date(Date.now() + 60 * 60 * 24 * 1000 * req.body.length)
     }
   });
-  res.status(200).json(folder);
+  const folderList = await prisma.folder.findMany({
+    where: {
+      userId: req.params.id
+    },
+    include: {
+      User: true
+    }
+  });
+  res.status(200).json({ folder: folder, folderList: folderList });
 });
 
 export const get_shared_folder = expressAsyncHandler(async (req, res, next) => {
@@ -105,7 +113,7 @@ export const get_shared_folder = expressAsyncHandler(async (req, res, next) => {
     }
   });
   if (folder) {
-    const date = new Date(folder.share_Date);
+    const date = new Date(folder.shareDate);
     if (Date.now() < date.getTime() && folder) {
       const files = await prisma.file.findMany({
         where: {
